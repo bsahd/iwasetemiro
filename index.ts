@@ -50,7 +50,7 @@ function resetGame() {
     };
 
     const systemPrompt =
-        "あなたは知識が豊富なAIアシスタントです。ユーザーからの質問や会話に対して、誠実かつ自然に日本語で応答してください。";
+        "あなたは知識が豊富なAIアシスタントです。ユーザーからの質問や会話に対して、誠実かつ簡潔、自然に日本語で応答してください。";
     chatHistory.push({ role: "system", content: systemPrompt });
 
     addSystemMessage(
@@ -79,7 +79,7 @@ async function handleSendMessage(message: string) {
 
 async function generateAIReply() {
     const chunks = await client.chat.completions.create({
-        model: "gemma3:1b",
+        model: Deno.args[0],
         messages: chatHistory,
         stream: true,
         max_tokens: 50,
