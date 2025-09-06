@@ -82,7 +82,6 @@ async function generateAIReply() {
         model: Deno.args[0],
         messages: chatHistory,
         stream: true,
-        max_tokens: 50,
     });
 
     let fullResponse = "";
